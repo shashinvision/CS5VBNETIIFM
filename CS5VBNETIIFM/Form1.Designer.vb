@@ -22,43 +22,58 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.actorNameCB = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.loadXMLBtn = New System.Windows.Forms.Button()
+        Me.loadXMLDialog = New System.Windows.Forms.OpenFileDialog()
         Me.SuspendLayout()
         '
-        'ComboBox1
+        'actorNameCB
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(66, 46)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(154, 23)
-        Me.ComboBox1.TabIndex = 0
-        Me.ComboBox1.Text = "-- Seleccione un Arctor --"
+        Me.actorNameCB.FormattingEnabled = True
+        Me.actorNameCB.Location = New System.Drawing.Point(235, 57)
+        Me.actorNameCB.Name = "actorNameCB"
+        Me.actorNameCB.Size = New System.Drawing.Size(154, 23)
+        Me.actorNameCB.TabIndex = 0
+        Me.actorNameCB.Text = "-- Seleccione un Arctor --"
+        Me.actorNameCB.Visible = False
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label1.Location = New System.Drawing.Point(66, 25)
+        Me.Label1.Location = New System.Drawing.Point(235, 29)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(38, 15)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Actor"
+        '
+        'loadXMLBtn
+        '
+        Me.loadXMLBtn.Location = New System.Drawing.Point(66, 56)
+        Me.loadXMLBtn.Name = "loadXMLBtn"
+        Me.loadXMLBtn.Size = New System.Drawing.Size(149, 23)
+        Me.loadXMLBtn.TabIndex = 2
+        Me.loadXMLBtn.Text = "Cargar XML"
+        Me.loadXMLBtn.UseVisualStyleBackColor = True
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.loadXMLBtn)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.actorNameCB)
         Me.Name = "Form1"
-        Me.Text = "Estadísticas Películas"
+        Me.Text = "Estadísticas Películas - Felipe Mancilla"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents actorNameCB As ComboBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents loadXMLBtn As Button
+    Friend WithEvents loadXMLDialog As OpenFileDialog
 End Class
