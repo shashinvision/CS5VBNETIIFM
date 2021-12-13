@@ -10,7 +10,7 @@ Public Class Form1
 
     ' Conexin MySQL
     Private connString As String = "Server=127.0.0.1;User=root;Password=Qwerty123.,;Port=3306;database=sakila"
-
+    Dim reader As MySqlDataReader
 
     ' funcin solo con fines de testear la conexin con la base de datos
     Public Sub textConection()
@@ -35,25 +35,6 @@ Public Class Form1
 
     End Sub
 
-    Public Function listadoActor() As DataSet
-        Dim Conexion As New MySqlConnection(connString)
-
-        Conexion.Open()
-
-        Dim Query As String = "SELECT * FROM `empleados` LIMIT 1000;"
-
-        Dim Adaptador As MySqlDataAdapter
-
-        Dim dataSet As New DataSet
-
-        Adaptador = New MySqlDataAdapter(Query, Conexion)
-
-        Adaptador.Fill(dataSet, "empleado")
-
-        Return dataSet
-
-
-    End Function
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         textConection()
     End Sub
@@ -71,7 +52,7 @@ Public Class Form1
 
 
         Catch ex As Exception
-            MessageBox.Show("Error: " + ex.Message)
+            MessageBox.Show("Error XML: " + ex.Message)
 
         End Try
 
@@ -94,7 +75,9 @@ Public Class Form1
 
     Private Sub actorNameCB_SelectedIndexChanged(sender As Object, e As EventArgs) Handles actorNameCB.SelectedIndexChanged
 
-        MessageBox.Show(idActor(actorNameCB.SelectedItem.ToString))
+        ' MessageBox.Show(idActor(actorNameCB.SelectedItem.ToString))
+        titulosActorRelacionado(idActor(actorNameCB.SelectedItem.ToString))
+
 
     End Sub
 
@@ -106,4 +89,40 @@ Public Class Form1
         Return idACtorSeleccionado
 
     End Function
+
+    Public Sub titulosActorRelacionado(idActor As Int32)
+        Dim Conexion As New MySqlConnection(connString)
+
+        Conexion.Open()
+        Dim Query As String = "select f.title " &
+                            "From actor a " &
+                            "inner join film_actor fa " &
+                            "on fa.actor_id = a.actor_id " &
+                            "inner join film f " &
+                            "on f.film_id = fa.film_id " &
+                            "where a.actor_id = @idActor"
+
+        Try
+            Dim comando As MySqlCommand = New MySqlCommand(Query, Conexion)
+            comando.Parameters.AddWithValue("@idActor", idActor)
+            reader = comando.ExecuteReader()
+
+            ' limpio los items antes de cargar los nuevos
+            filmsListBox.Items.Clear()
+
+            While reader.Read()
+                filmsListBox.Items.Add(reader(0))
+            End While
+            filmsListBox.Visible = True
+
+
+        Catch ex As Exception
+            MessageBox.Show("Error llenado de ListBox Film: " + ex.Message)
+        Finally
+            Conexion.Close()
+        End Try
+
+
+
+    End Sub
 End Class
