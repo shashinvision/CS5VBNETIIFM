@@ -26,6 +26,7 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.loadXMLBtn = New System.Windows.Forms.Button()
         Me.loadXMLDialog = New System.Windows.Forms.OpenFileDialog()
+        Me.dataListBox = New System.Windows.Forms.ListBox()
         Me.SuspendLayout()
         '
         'actorNameCB
@@ -57,11 +58,22 @@ Partial Class Form1
         Me.loadXMLBtn.Text = "Cargar XML"
         Me.loadXMLBtn.UseVisualStyleBackColor = True
         '
+        'dataListBox
+        '
+        Me.dataListBox.FormattingEnabled = True
+        Me.dataListBox.ItemHeight = 15
+        Me.dataListBox.Location = New System.Drawing.Point(235, 106)
+        Me.dataListBox.Name = "dataListBox"
+        Me.dataListBox.Size = New System.Drawing.Size(154, 214)
+        Me.dataListBox.TabIndex = 3
+        Me.dataListBox.Visible = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.dataListBox)
         Me.Controls.Add(Me.loadXMLBtn)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.actorNameCB)
@@ -76,4 +88,5 @@ Partial Class Form1
     Friend WithEvents Label1 As Label
     Friend WithEvents loadXMLBtn As Button
     Friend WithEvents loadXMLDialog As OpenFileDialog
+    Friend WithEvents dataListBox As ListBox
 End Class
