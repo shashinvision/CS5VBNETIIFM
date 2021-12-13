@@ -65,6 +65,7 @@ Public Class Form1
 
             leerXMLActores(loadXMLDialog.FileName)
             actorNameCB.Visible = True
+            actorLabel.Visible = True
             MessageBox.Show("Carga de XML realizada")
         Else
             MessageBox.Show("No se carg un archivo XML")
@@ -114,6 +115,7 @@ Public Class Form1
                 filmsListBox.Items.Add(reader(0))
             End While
             filmsListBox.Visible = True
+            filmsLabel.Visible = True
 
 
         Catch ex As Exception
@@ -123,6 +125,10 @@ Public Class Form1
         End Try
 
 
+
+    End Sub
+
+    Private Sub filmsListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles filmsListBox.SelectedIndexChanged
 
     End Sub
 End Class

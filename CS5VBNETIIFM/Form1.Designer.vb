@@ -23,10 +23,11 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.actorNameCB = New System.Windows.Forms.ComboBox()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.actorLabel = New System.Windows.Forms.Label()
         Me.loadXMLBtn = New System.Windows.Forms.Button()
         Me.loadXMLDialog = New System.Windows.Forms.OpenFileDialog()
         Me.filmsListBox = New System.Windows.Forms.ListBox()
+        Me.filmsLabel = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'actorNameCB
@@ -39,15 +40,16 @@ Partial Class Form1
         Me.actorNameCB.Text = "-- Seleccione un Arctor --"
         Me.actorNameCB.Visible = False
         '
-        'Label1
+        'actorLabel
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label1.Location = New System.Drawing.Point(235, 29)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(38, 15)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Actor"
+        Me.actorLabel.AutoSize = True
+        Me.actorLabel.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.actorLabel.Location = New System.Drawing.Point(235, 29)
+        Me.actorLabel.Name = "actorLabel"
+        Me.actorLabel.Size = New System.Drawing.Size(38, 15)
+        Me.actorLabel.TabIndex = 1
+        Me.actorLabel.Text = "Actor"
+        Me.actorLabel.Visible = False
         '
         'loadXMLBtn
         '
@@ -62,22 +64,35 @@ Partial Class Form1
         '
         Me.filmsListBox.FormattingEnabled = True
         Me.filmsListBox.ItemHeight = 15
-        Me.filmsListBox.Location = New System.Drawing.Point(235, 106)
+        Me.filmsListBox.Location = New System.Drawing.Point(235, 130)
         Me.filmsListBox.Name = "filmsListBox"
         Me.filmsListBox.Size = New System.Drawing.Size(154, 214)
         Me.filmsListBox.TabIndex = 3
         Me.filmsListBox.Visible = False
+        '
+        'filmsLabel
+        '
+        Me.filmsLabel.AutoSize = True
+        Me.filmsLabel.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.filmsLabel.Location = New System.Drawing.Point(235, 102)
+        Me.filmsLabel.Name = "filmsLabel"
+        Me.filmsLabel.Size = New System.Drawing.Size(96, 15)
+        Me.filmsLabel.TabIndex = 4
+        Me.filmsLabel.Text = "Filmes por actor"
+        Me.filmsLabel.Visible = False
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.filmsLabel)
         Me.Controls.Add(Me.filmsListBox)
         Me.Controls.Add(Me.loadXMLBtn)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.actorLabel)
         Me.Controls.Add(Me.actorNameCB)
         Me.Name = "Form1"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Estadísticas Películas - Felipe Mancilla"
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -85,8 +100,9 @@ Partial Class Form1
     End Sub
 
     Friend WithEvents actorNameCB As ComboBox
-    Friend WithEvents Label1 As Label
+    Friend WithEvents actorLabel As Label
     Friend WithEvents loadXMLBtn As Button
     Friend WithEvents loadXMLDialog As OpenFileDialog
     Friend WithEvents filmsListBox As ListBox
+    Friend WithEvents filmsLabel As Label
 End Class
