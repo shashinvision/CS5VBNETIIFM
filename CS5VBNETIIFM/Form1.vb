@@ -68,7 +68,7 @@ Public Class Form1
             actorLabel.Visible = True
             MessageBox.Show("Carga de XML realizada")
         Else
-            MessageBox.Show("No se cargo un archivo XML")
+            MessageBox.Show("No se añadió un archivo XML")
         End If
 
 
