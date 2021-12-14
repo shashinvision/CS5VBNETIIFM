@@ -12,7 +12,7 @@ Public Class Form1
     Private connString As String = "Server=127.0.0.1;User=root;Password=Qwerty123.,;Port=3306;database=sakila"
     Dim reader As MySqlDataReader
 
-    ' funcin solo con fines de testear la conexin con la base de datos
+    ' funcion solo con fines de testear la conexin con la base de datos
     Public Sub textConection()
 
         Dim Conexion As New MySqlConnection(connString)
@@ -29,7 +29,7 @@ Public Class Form1
 
         End Try
 
-        MessageBox.Show("Conectado")
+        MessageBox.Show("Conectado a la base de datos")
 
         Conexion.Close()
 
@@ -166,8 +166,13 @@ Public Class Form1
             CategoryLB.Items.Clear()
 
             While reader.Read()
-                idiomasLB.Items.Add(reader(5))
-                CategoryLB.Items.Add(reader(6))
+                descriptionTxt.Text = reader(0).ToString
+                yearTxt.Text = reader(1).ToString
+                durationTxt.Text = reader(2).ToString
+                RatingTxt.Text = reader(3).ToString
+                featuresTxt.Text = reader(4).ToString
+                idiomasLB.Items.Add(reader(5).ToString)
+                CategoryLB.Items.Add(reader(6).ToString)
             End While
             detalleGB.Visible = True
 

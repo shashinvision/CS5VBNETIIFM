@@ -39,7 +39,7 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.idiomasLB = New System.Windows.Forms.ListBox()
         Me.RatingTxt = New System.Windows.Forms.TextBox()
-        Me.rurationTxt = New System.Windows.Forms.TextBox()
+        Me.durationTxt = New System.Windows.Forms.TextBox()
         Me.yearTxt = New System.Windows.Forms.TextBox()
         Me.descriptionTxt = New System.Windows.Forms.TextBox()
         Me.featuresTxt = New System.Windows.Forms.TextBox()
@@ -109,7 +109,7 @@ Partial Class Form1
         Me.detalleGB.Controls.Add(Me.Label1)
         Me.detalleGB.Controls.Add(Me.idiomasLB)
         Me.detalleGB.Controls.Add(Me.RatingTxt)
-        Me.detalleGB.Controls.Add(Me.rurationTxt)
+        Me.detalleGB.Controls.Add(Me.durationTxt)
         Me.detalleGB.Controls.Add(Me.yearTxt)
         Me.detalleGB.Controls.Add(Me.descriptionTxt)
         Me.detalleGB.Controls.Add(Me.featuresTxt)
@@ -141,7 +141,6 @@ Partial Class Form1
         Me.Label6.Size = New System.Drawing.Size(69, 15)
         Me.Label6.TabIndex = 12
         Me.Label6.Text = "Puntuación"
-        Me.Label6.Visible = False
         '
         'Label5
         '
@@ -152,7 +151,6 @@ Partial Class Form1
         Me.Label5.Size = New System.Drawing.Size(57, 15)
         Me.Label5.TabIndex = 11
         Me.Label5.Text = "Duración"
-        Me.Label5.Visible = False
         '
         'Label4
         '
@@ -163,7 +161,6 @@ Partial Class Form1
         Me.Label4.Size = New System.Drawing.Size(117, 15)
         Me.Label4.TabIndex = 10
         Me.Label4.Text = "Año de lanzamiento"
-        Me.Label4.Visible = False
         '
         'Label3
         '
@@ -174,7 +171,6 @@ Partial Class Form1
         Me.Label3.Size = New System.Drawing.Size(72, 15)
         Me.Label3.TabIndex = 9
         Me.Label3.Text = "Descripción"
-        Me.Label3.Visible = False
         '
         'Label2
         '
@@ -185,7 +181,6 @@ Partial Class Form1
         Me.Label2.Size = New System.Drawing.Size(65, 15)
         Me.Label2.TabIndex = 8
         Me.Label2.Text = "Categorias"
-        Me.Label2.Visible = False
         '
         'CategoryLB
         '
@@ -195,7 +190,6 @@ Partial Class Form1
         Me.CategoryLB.Name = "CategoryLB"
         Me.CategoryLB.Size = New System.Drawing.Size(80, 244)
         Me.CategoryLB.TabIndex = 7
-        Me.CategoryLB.Visible = False
         '
         'Label1
         '
@@ -206,7 +200,6 @@ Partial Class Form1
         Me.Label1.Size = New System.Drawing.Size(50, 15)
         Me.Label1.TabIndex = 6
         Me.Label1.Text = "Idiomas"
-        Me.Label1.Visible = False
         '
         'idiomasLB
         '
@@ -216,7 +209,6 @@ Partial Class Form1
         Me.idiomasLB.Name = "idiomasLB"
         Me.idiomasLB.Size = New System.Drawing.Size(80, 244)
         Me.idiomasLB.TabIndex = 6
-        Me.idiomasLB.Visible = False
         '
         'RatingTxt
         '
@@ -225,12 +217,12 @@ Partial Class Form1
         Me.RatingTxt.Size = New System.Drawing.Size(116, 23)
         Me.RatingTxt.TabIndex = 4
         '
-        'rurationTxt
+        'durationTxt
         '
-        Me.rurationTxt.Location = New System.Drawing.Point(22, 92)
-        Me.rurationTxt.Name = "rurationTxt"
-        Me.rurationTxt.Size = New System.Drawing.Size(128, 23)
-        Me.rurationTxt.TabIndex = 3
+        Me.durationTxt.Location = New System.Drawing.Point(22, 92)
+        Me.durationTxt.Name = "durationTxt"
+        Me.durationTxt.Size = New System.Drawing.Size(128, 23)
+        Me.durationTxt.TabIndex = 3
         '
         'yearTxt
         '
@@ -283,7 +275,7 @@ Partial Class Form1
     Friend WithEvents filmsLabel As Label
     Friend WithEvents detalleGB As GroupBox
     Friend WithEvents RatingTxt As TextBox
-    Friend WithEvents rurationTxt As TextBox
+    Friend WithEvents durationTxt As TextBox
     Friend WithEvents yearTxt As TextBox
     Friend WithEvents descriptionTxt As TextBox
     Friend WithEvents featuresTxt As TextBox
