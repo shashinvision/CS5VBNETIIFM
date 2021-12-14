@@ -103,7 +103,7 @@ Public Class Form1
         Dim Conexion As New MySqlConnection(connString)
 
         Conexion.Open()
-        Dim Query As String = "select f.id_film, f.title " &
+        Dim Query As String = "select f.film_id, f.title " &
                             "From actor a " &
                             "inner join film_actor fa " &
                             "on fa.actor_id = a.actor_id " &
@@ -120,14 +120,14 @@ Public Class Form1
             filmsListBox.Items.Clear()
 
             While reader.Read()
-                filmsListBox.Items.Add(reader(0) + "-" + reader(1))
+                filmsListBox.Items.Add(reader(0).ToString + " - " + reader(1).ToString)
             End While
             filmsListBox.Visible = True
             filmsLabel.Visible = True
 
 
         Catch ex As Exception
-            MessageBox.Show("Error llenado de ListBox Film: " + ex.Message)
+            MessageBox.Show("Error llenado de Film: " + ex.Message)
         Finally
             Conexion.Close()
         End Try
@@ -138,23 +138,21 @@ Public Class Form1
         ' MessageBox.Show("Test de click ")
         detallesFilmRelacionado(idFilm(filmsListBox.SelectedItem.ToString))
 
-        detalleGB.Visible = True
-
     End Sub
 
     Public Sub detallesFilmRelacionado(idFilm As Int32)
         Dim Conexion As New MySqlConnection(connString)
 
         Conexion.Open()
-        Dim Query As String = "Select f.description, f.release_year, f.length, f.rating, f.special_features, l.name, c.name 
-                                From film f
-                                inner Join language l 
-                                    On l.language_id = f.language_id 
-                                Left Join film_category fc 
-                                    On fc.film_id = f.film_id 
-                                Left Join category c 
-                                    On c.category_id = fc.category_id
-                                where f.film_id = @idFilm"
+        Dim Query As String = "Select f.description, f.release_year, f.length, f.rating, f.special_features, l.name, c.name " &
+                               "From film f " &
+                               "inner Join language l " &
+                                    "On l.language_id = f.language_id " &
+                                "Left Join film_category fc " &
+                                    "On fc.film_id = f.film_id " &
+                                "Left Join category c " &
+                                    "On c.category_id = fc.category_id " &
+                                "where f.film_id = @idFilm"
 
 
 
@@ -164,17 +162,17 @@ Public Class Form1
             reader = comando.ExecuteReader()
 
             ' limpio los items antes de cargar los nuevos
-            filmsListBox.Items.Clear()
+            idiomasLB.Items.Clear()
+            CategoryLB.Items.Clear()
 
             While reader.Read()
-                filmsListBox.Items.Add(reader(0))
+                idiomasLB.Items.Add(reader(5))
+                CategoryLB.Items.Add(reader(6))
             End While
-            filmsListBox.Visible = True
-            filmsLabel.Visible = True
-
+            detalleGB.Visible = True
 
         Catch ex As Exception
-            MessageBox.Show("Error llenado de ListBox Film: " + ex.Message)
+            MessageBox.Show("Error llenado de ListBox Detalle Film: " + ex.Message)
         Finally
             Conexion.Close()
         End Try
