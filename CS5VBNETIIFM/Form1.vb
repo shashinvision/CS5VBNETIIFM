@@ -91,11 +91,19 @@ Public Class Form1
 
     End Function
 
+    Public Function idFilm(filmSeleccionado As String) As Int32
+        ' extraigo el nombre completo del item seleccionado para seprar el ID del nombre 
+        Dim idFilmSeleccionado = Int32.Parse(filmSeleccionado.Substring(0, filmSeleccionado.LastIndexOf(" - ")))
+
+        Return idFilmSeleccionado
+
+    End Function
+
     Public Sub titulosActorRelacionado(idActor As Int32)
         Dim Conexion As New MySqlConnection(connString)
 
         Conexion.Open()
-        Dim Query As String = "select f.title " &
+        Dim Query As String = "select f.id_film, f.title " &
                             "From actor a " &
                             "inner join film_actor fa " &
                             "on fa.actor_id = a.actor_id " &
@@ -106,6 +114,53 @@ Public Class Form1
         Try
             Dim comando As MySqlCommand = New MySqlCommand(Query, Conexion)
             comando.Parameters.AddWithValue("@idActor", idActor)
+            reader = comando.ExecuteReader()
+
+            ' limpio los items antes de cargar los nuevos
+            filmsListBox.Items.Clear()
+
+            While reader.Read()
+                filmsListBox.Items.Add(reader(0) + "-" + reader(1))
+            End While
+            filmsListBox.Visible = True
+            filmsLabel.Visible = True
+
+
+        Catch ex As Exception
+            MessageBox.Show("Error llenado de ListBox Film: " + ex.Message)
+        Finally
+            Conexion.Close()
+        End Try
+
+    End Sub
+
+    Private Sub filmsListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles filmsListBox.SelectedIndexChanged
+        ' MessageBox.Show("Test de click ")
+        detallesFilmRelacionado(idFilm(filmsListBox.SelectedItem.ToString))
+
+        detalleGB.Visible = True
+
+    End Sub
+
+    Public Sub detallesFilmRelacionado(idFilm As Int32)
+        Dim Conexion As New MySqlConnection(connString)
+
+        Conexion.Open()
+        Dim Query As String = "Select f.description, f.release_year, f.length, f.rating, f.special_features, l.name, c.name 
+                                From film f
+                                inner Join language l 
+                                    On l.language_id = f.language_id 
+                                Left Join film_category fc 
+                                    On fc.film_id = f.film_id 
+                                Left Join category c 
+                                    On c.category_id = fc.category_id
+                                where f.film_id = @idFilm"
+
+
+
+        Try
+            Dim comando As MySqlCommand = New MySqlCommand(Query, Conexion)
+            comando.Parameters.AddWithValue("@idFilm", idFilm)
             reader = comando.ExecuteReader()
 
             ' limpio los items antes de cargar los nuevos
@@ -124,11 +179,8 @@ Public Class Form1
             Conexion.Close()
         End Try
 
-
-
     End Sub
 
-    Private Sub filmsListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles filmsListBox.SelectedIndexChanged
 
-    End Sub
+
 End Class
