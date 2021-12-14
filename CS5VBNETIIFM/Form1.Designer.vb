@@ -130,7 +130,6 @@ Partial Class Form1
         Me.Label7.Size = New System.Drawing.Size(146, 15)
         Me.Label7.TabIndex = 13
         Me.Label7.Text = "Características especiales"
-        Me.Label7.Visible = False
         '
         'Label6
         '
